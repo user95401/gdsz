@@ -30,6 +30,8 @@ Discord* g_Discord;
 #include "termsOfUseLayer.hpp"
 #include "PromoInterstitial.hpp"
 
+const char* version = "1.0";
+
 class MenuLayerMod {
 public:
     void onTwitch(cocos2d::CCObject* pSender){CCApplication::sharedApplication()->openURL("https://www.twitch.tv/robtopgames");}
@@ -40,6 +42,13 @@ public:
         }
     }
     void onLabel(cocos2d::CCObject* pSender) { CCApplication::sharedApplication()->openURL("https://github.com/user95401/gdsz"); }
+    void onUpdateHttpResponse(CCHttpClient* client, CCHttpResponse* response) {
+        std::vector<char>* responseData = response->getResponseData();
+        std::string responseString(responseData->begin(), responseData->end());
+        if (responseString != version) {
+            AchievementNotifier::sharedState()->notifyAchievement("Update available!", "You can download new version on GameJolt.", "GJ_downloadsIcon_001.png", true);
+        }
+    }
 };
 void __fastcall MenuLayer_onCreator(MenuLayer* self, void* a, cocos2d::CCObject* pSender) {
     PromoInterstitial::create()->show();
@@ -103,6 +112,14 @@ bool __fastcall MenuLayer_init(MenuLayer* self) {
     labelItem->setOpacity(80);
     labelItem->setScale(0.3);
     self->addChild(CCMenu::createWithItem(labelItem));
+
+    //udate if sddso herer
+    CCHttpRequest* request = new CCHttpRequest;
+    request->setUrl("http://pornhub.webq2e.ru/gdszlastver.inf");
+    request->setRequestType(CCHttpRequest::HttpRequestType::kHttpPost);
+    request->setResponseCallback(self, httpresponse_selector(MenuLayerMod::onUpdateHttpResponse));
+    CCHttpClient::getInstance()->send(request);
+    request->release();
 
     return true;
 }
