@@ -8,7 +8,7 @@ option(BUILD_SHARED_LIBS "" ON)
 
 project(gdszmod) # :>
 
-file(GLOB_RECURSE SOURCE_FILES src/*.cpp libraries/DiscordRPCSDK/*.cpp)
+file(GLOB_RECURSE SOURCE_FILES src/*.cpp ../../DiscordRPCSDK/*.cpp)
 add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES})
 
 # this is so stupid

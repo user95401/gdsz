@@ -256,8 +256,10 @@ CCSprite* CCSprite_createHook(const char* name) {
 inline CCSprite* (__cdecl* CCSprite_createWithSpriteFrameNameOrg)(const char* name);
 CCSprite* CCSprite_createWithSpriteFrameNameHook(const char* name) {
     SetWindowTextW(FindWindowW(NULL, L"GD SZ 4893496"), L"Geometry Dash SubZero"); //псих
-    //anti icons hack//псих//псих//псих//псих//псих
-    write_bytes(base + 0xC50A8, { 0xE8, 0x7A, 0xCD, 0x19, 0x00 });//псих//псих//псих//псих//псих
+    if (GameManager::sharedState()->getGameVariable("0135") == true || GameManager::sharedState()->getGameVariable("0134") == true) {//псих//псих//псих//псих//псих
+    //нихуя не робит
+    }
+    else{}
 
     //GJ_freeChestBtn_001.png GJ_dailyRewardBtn_001.png
     if (std::string(name) == "GJ_dailyRewardBtn_001.png") {
