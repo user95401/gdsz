@@ -1,6 +1,6 @@
-#include "termsOfUseLayer.hpp"
+#include "TOSPopup.hpp"
 
-bool termsOfUseLayer::init() {
+bool TOSPopup::init() {
 	auto winSize = CCDirector::sharedDirector()->getWinSize();
 
 	if (!this->initWithColor({ 0, 0, 0, 75 })) return false;
@@ -36,7 +36,7 @@ bool termsOfUseLayer::init() {
 	blueText1bruh->setPosition(-78.000f, 0);
 	blueText1bruh->setColor({ 93, 170, 239 });
 	blueText1bruh->setScale(0.5f);
-	auto blueText1Btn = CCMenuItem::create(this, menu_selector(termsOfUseLayer::onTermsOfUse));
+	auto blueText1Btn = CCMenuItem::create(this, menu_selector(TOSPopup::onTermsOfUse));
 	blueText1Btn->setContentSize({ blueText1bruh->getContentSize().width / 2, blueText1bruh->getContentSize().height / 2 });
 	blueText1Btn->setPosition(blueText1bruh->getPositionX(), blueText1bruh->getPositionY());
 	m_pButtonMenu->addChild(blueText1Btn);
@@ -46,7 +46,7 @@ bool termsOfUseLayer::init() {
 	blueText2bruh->setPosition(81.000f, -16.000f);
 	blueText2bruh->setColor({ 93, 170, 239 });
 	blueText2bruh->setScale(0.5f);
-	auto blueText2Btn = CCMenuItem::create(this,menu_selector(termsOfUseLayer::onPrivacyPolicy));
+	auto blueText2Btn = CCMenuItem::create(this,menu_selector(TOSPopup::onPrivacyPolicy));
 	blueText2Btn->setContentSize({ blueText2bruh->getContentSize().width/2, blueText2bruh->getContentSize().height / 2 });
 	blueText2Btn->setPosition(blueText2bruh->getPositionX(), blueText2bruh->getPositionY());
 	m_pButtonMenu->addChild(blueText2Btn);
@@ -54,7 +54,7 @@ bool termsOfUseLayer::init() {
 	auto closeBtn = gd::CCMenuItemSpriteExtra::create(
 		gd::ButtonSprite::create("OK", 30, true, "goldFont.fnt", "GJ_button_01.png", 0.0f, 1.0f),
 		this,
-		menu_selector(termsOfUseLayer::onOk)
+		menu_selector(TOSPopup::onOk)
 	);
 	m_pButtonMenu->addChild(closeBtn);
 	closeBtn->setPosition({ 0, -74.000f });
@@ -65,16 +65,16 @@ bool termsOfUseLayer::init() {
 	return true;
 }
 
-void termsOfUseLayer::onOk(cocos2d::CCObject*) {
+void TOSPopup::onOk(cocos2d::CCObject*) {
 	GameManager::sharedState()->setUGV("30", true);
 	this->removeFromParentAndCleanup(true);
 }
 
-void termsOfUseLayer::onTermsOfUse(cocos2d::CCObject*) {CCApplication::sharedApplication()->openURL("http://www.robtopgames.com/tos.html");}
-void termsOfUseLayer::onPrivacyPolicy(cocos2d::CCObject*) { CCApplication::sharedApplication()->openURL("http://www.robtopgames.com/privacy.html"); }
+void TOSPopup::onTermsOfUse(cocos2d::CCObject*) {CCApplication::sharedApplication()->openURL("http://www.robtopgames.com/tos.html");}
+void TOSPopup::onPrivacyPolicy(cocos2d::CCObject*) { CCApplication::sharedApplication()->openURL("http://www.robtopgames.com/privacy.html"); }
 
-termsOfUseLayer* termsOfUseLayer::create() {
-	termsOfUseLayer* pRet = new termsOfUseLayer();
+TOSPopup* TOSPopup::create() {
+	TOSPopup* pRet = new TOSPopup();
 	if (pRet && pRet->init()) {
 		pRet->autorelease();
 		return pRet;

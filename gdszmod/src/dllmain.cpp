@@ -27,7 +27,7 @@ using namespace cocos2d::extension;
 #include "DiscordRpc.h"
 Discord* g_Discord;
 
-#include "termsOfUseLayer.hpp"
+#include "TOSPopup.hpp"
 #include "PromoInterstitial.hpp"
 
 const char* version = "1.0";
@@ -38,7 +38,7 @@ public:
     void onDiscord(cocos2d::CCObject* pSender){CCApplication::sharedApplication()->openURL("https://discord.com/invite/geometrydash");}
     void termsOfUseLayerShow(cocos2d::CCObject* pSender) {
         if (!GameManager::sharedState()->getUGV("30")) {
-            termsOfUseLayer::create()->show();
+            TOSPopup::create()->show();
         }
     }
     void onLabel(cocos2d::CCObject* pSender) { CCApplication::sharedApplication()->openURL("https://github.com/user95401/gdsz"); }

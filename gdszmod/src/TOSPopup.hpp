@@ -1,5 +1,5 @@
-#ifndef __termsOfUseLayer_H__
-#define __termsOfUseLayer_H__
+#ifndef __TOSPopup_H__
+#define __TOSPopup_H__
 
 #include <cocos2d.h>
 #include <gd.h>
@@ -7,7 +7,7 @@ using namespace cocos2d;
 using namespace gd;
 using namespace cocos2d::extension;
 
-class termsOfUseLayer : public gd::FLAlertLayer {
+class TOSPopup : public gd::FLAlertLayer {
 protected:
 	virtual bool init();
 
@@ -16,7 +16,7 @@ protected:
 	void onPrivacyPolicy(cocos2d::CCObject*);
 
 public:
-	static termsOfUseLayer* create();
+	static TOSPopup* create();
 };
 
 #endif
