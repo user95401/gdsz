@@ -1,0 +1,26 @@
+{
+    "settings": {
+        "levelCount": 3,
+		"deleteDemonLocks": 1
+    },
+    "levels": [
+        {
+            "name": "Press Start",
+            "difficulty": 2,
+            "stars": 4,
+            "song": "PressStart.mp3"
+        },
+        {
+            "name": "Nock Em",
+            "difficulty": 3,
+            "stars": 6,
+            "song": "knockemout.mp3"
+        },
+        {
+            "name": "Power Trip",
+            "difficulty": 4,
+            "stars": 8,
+            "song": "PowerTrip.mp3"
+        }
+    ]
+}
