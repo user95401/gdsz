@@ -26,8 +26,8 @@ target_include_directories(${PROJECT_NAME} PRIVATE
   libraries/fmod
   ../../curly-eureka/gd.h/include
   ../../curly-eureka/gd.h/
-  libraries/DiscordRPCSDK/Includes
-  libraries/DiscordRPCSDK/SourceFiles
+  ../../DiscordRPCSDK/Includes
+  ../../DiscordRPCSDK/SourceFiles
 )
 target_include_directories(${PROJECT_NAME} PRIVATE libraries/fmod)
 add_subdirectory(libraries/minhook)
