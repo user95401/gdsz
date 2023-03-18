@@ -36,11 +36,7 @@ class MenuLayerMod {
 public:
     void onTwitch(cocos2d::CCObject* pSender){CCApplication::sharedApplication()->openURL("https://www.twitch.tv/robtopgames");}
     void onDiscord(cocos2d::CCObject* pSender){CCApplication::sharedApplication()->openURL("https://discord.com/invite/geometrydash");}
-    void termsOfUseLayerShow(cocos2d::CCObject* pSender) {
-        if (!GameManager::sharedState()->getUGV("30")) {
-            TOSPopup::create()->show();
-        }
-    }
+    void termsOfUseLayerShow(cocos2d::CCObject* pSender) { if (!GameManager::sharedState()->getUGV("30")) { TOSPopup::create()->show(); } }
     void onLabel(cocos2d::CCObject* pSender) { CCApplication::sharedApplication()->openURL("https://github.com/user95401/gdsz"); }
     void onUpdateHttpResponse(CCHttpClient* client, CCHttpResponse* response) {
         std::vector<char>* responseData = response->getResponseData();
@@ -404,6 +400,8 @@ DWORD WINAPI thread_func(void* hModule) {
     write_bytes(base + 0x8FADC, { 0xEB });
     //Trail Bug Fix (Fixes trail cutting on high refresh rates)
     write_bytes(libcocos2d + 0xAE9BD, { 0xBB , 0xFF , 0x00 , 0x00 , 0x00 , 0x90 });
+
+    CCFileUtils::sharedFileUtils()->addSearchPath("modResources");
 
     return 0;
 }
