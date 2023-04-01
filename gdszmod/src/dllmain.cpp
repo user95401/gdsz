@@ -250,7 +250,7 @@ bool __fastcall PlayLayer_init(PlayLayer* self, void* a, GJGameLevel* level) {
         gd::GameManager::sharedState()->setGameVariable("0023", false);
         self->onExit();
         AchievementNotifier::sharedState()->notifyAchievement("Do not enable Smooth Fix!", "just dont pls", "exMark_001.png", true);
-        GameSoundManager::sharedState()->playSound("door001.ogg");
+        GameSoundManager::sharedState()->playEffect("door001.ogg");
     }
     return true;
 }
